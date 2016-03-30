@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Science Time</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="drawer_opened">select an item</string>
+    <string name="drawer_close">science time</string>
+</resources>
