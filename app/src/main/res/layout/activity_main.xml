@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:indeterminateTint="@color/colorPrimary"
         android:visibility="invisible"/>
 
 
@@ -32,7 +33,7 @@
 
         <ListView
             android:id="@+id/drawer_listview"
-            android:layout_width="200dp"
+            android:layout_width="240dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
 
@@ -41,6 +42,7 @@
 
 
         <android.support.v7.widget.RecyclerView
+            android:background="#ebf2f2"
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent">

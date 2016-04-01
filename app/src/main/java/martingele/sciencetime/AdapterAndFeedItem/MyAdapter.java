@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 
 import martingele.sciencetime.R;
 import martingele.sciencetime.animatons.AnimatonUtility;
-import martingele.sciencetime.deatils.NewsDetails;
+import martingele.sciencetime.deatils.NewsDetailsActivity;
 
 /**
  * Created by rishabh on 26-02-2016.
@@ -26,7 +25,7 @@ import martingele.sciencetime.deatils.NewsDetails;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     ArrayList<FeedItem> feedItems;
     Context context;
-    ProgressBar bar;
+
 
     private int previousPosition = 0;
 
@@ -103,7 +102,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, NewsDetails.class);
+                Intent intent = new Intent(context, NewsDetailsActivity.class);
                 intent.putExtra("Link", current.getLink());
                 context.startActivity(intent);
             }

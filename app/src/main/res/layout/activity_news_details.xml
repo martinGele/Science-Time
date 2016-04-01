@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ebf2f2"
 
-    tools:context="martingele.sciencetime.deatils.NewsDetails">
+    tools:context=".deatils.NewsDetailsActivity">
 
 
     <android.support.v7.widget.Toolbar
@@ -13,24 +14,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
+
         ></android.support.v7.widget.Toolbar>
 
-    <WebView
-        android:id="@+id/web_view_details"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_detail"
+        android:layout_margin="6dp"
+        android:elevation="4dp">
 
-        android:layout_below="@+id/toolbar_detail">
+        <WebView
+            android:id="@+id/web_view_details"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
 
-
-    </WebView>
-
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBarDetail"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+            android:layout_below="@+id/toolbar_detail">
 
 
+        </WebView>
+
+        <ProgressBar
+            android:id="@+id/progressBarDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:progressBackgroundTint="@color/colorPrimary"/>
+
+    </android.support.v7.widget.CardView>
 </RelativeLayout>

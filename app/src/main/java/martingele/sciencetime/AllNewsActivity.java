@@ -64,21 +64,13 @@ public class AllNewsActivity extends AppCompatActivity {
         mActionBarDrawerToggle.syncState();
     }
 
-    // i had to write down this code cause on back pressed it lead to the starting activity which ckecks up the connection and lead to main activity
-    @Override
-    public void onBackPressed() {
 
-        super.onBackPressed();
-        finish();
-
-    }
-   /*
     @Override
     protected void onDestroy() {
-        android.os.Process.killProcess(android.os.Process.myPid());
         super.onDestroy();
+        finish();
     }
-*/
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
