@@ -48,7 +48,7 @@ public class StartingActivity extends AppCompatActivity {
                 public void run() {
                     try {
 
-                        sleep(5000);
+                        sleep(4000);
 
                     } catch (Exception e) {
                     } finally {

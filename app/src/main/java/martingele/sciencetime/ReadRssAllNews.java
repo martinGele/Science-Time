@@ -1,10 +1,11 @@
 package martingele.sciencetime;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -28,18 +29,19 @@ import martingele.sciencetime.AdapterAndFeedItem.MyAdapter;
 public class ReadRssAllNews extends AsyncTask<Void, Void, Void> {
     Context context;
     public static String address = "https://rss.sciencedaily.com/all.xml";
-    ProgressDialog progressDialog;
+
     ArrayList<FeedItem> feedItems;
     RecyclerView recyclerView;
     URL url;
+    ProgressBar bar;
 
-    public ReadRssAllNews(Context context, RecyclerView recyclerView) {
+    public ReadRssAllNews(Context context, RecyclerView recyclerView, ProgressBar bar) {
         this.recyclerView = recyclerView;
         this.context = context;
-        progressDialog = new ProgressDialog(context);
-        progressDialog.getProgress();
-        progressDialog.setMessage("Loading...");
+        this.bar = bar;
+
     }
+
 
     public ReadRssAllNews(Runnable runnable, RecyclerView recyclerView2) {
 
@@ -47,14 +49,14 @@ public class ReadRssAllNews extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected void onPreExecute() {
-        progressDialog.show();
         super.onPreExecute();
+        bar.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        progressDialog.dismiss();
+        bar.setVisibility(View.INVISIBLE);
         MyAdapter adapter = new MyAdapter(context, feedItems);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new VerticalSpace(18));

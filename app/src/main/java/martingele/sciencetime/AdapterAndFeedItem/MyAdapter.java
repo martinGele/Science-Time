@@ -1,6 +1,7 @@
 package martingele.sciencetime.AdapterAndFeedItem;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -15,6 +17,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import martingele.sciencetime.R;
+import martingele.sciencetime.animatons.AnimatonUtility;
+import martingele.sciencetime.deatils.NewsDetails;
 
 /**
  * Created by rishabh on 26-02-2016.
@@ -22,6 +26,9 @@ import martingele.sciencetime.R;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     ArrayList<FeedItem> feedItems;
     Context context;
+    ProgressBar bar;
+
+    private int previousPosition = 0;
 
 
     public MyAdapter(Context context, ArrayList<FeedItem> feedItems) {
@@ -74,12 +81,33 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        FeedItem current = feedItems.get(position);
+        final FeedItem current = feedItems.get(position);
         holder.Title.setText(current.getTitle());
         holder.Description.setText(current.getDescription());
         holder.Date.setText(current.getPubDate());
         Picasso.with(context).load(current.getThumbnailUrl()).resize(90, 90).into(holder.Thumbnail);
 
+        //this will handle clicks from the recycleView
+
+        if (position > previousPosition) { // We are scrolling DOWN
+
+            AnimatonUtility.animate(holder, true);
+
+        } else { // We are scrolling UP
+            AnimatonUtility.animate(holder, false);
+
+
+        }
+        previousPosition = position;
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, NewsDetails.class);
+                intent.putExtra("Link", current.getLink());
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -103,6 +131,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         public MyViewHolder(View itemView) {
             super(itemView);
+
             Title = (TextView) itemView.findViewById(R.id.title_text);
             Description = (TextView) itemView.findViewById(R.id.description_text);
             Date = (TextView) itemView.findViewById(R.id.date_text);

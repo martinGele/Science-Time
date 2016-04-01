@@ -2,6 +2,16 @@
     <string name="app_name">Science Time</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="drawer_opened">select an item</string>
+    <string name="drawer_opened">select a theme to read</string>
     <string name="drawer_close">science time</string>
+
+
+    <string-array name="items">
+        <item>all news</item>
+        <item>physics</item>
+        <item>dont know</item>
+        <item>Item 4</item>
+        <item>Item 5</item>
+        <item>Item 6</item>
+    </string-array>
 </resources>

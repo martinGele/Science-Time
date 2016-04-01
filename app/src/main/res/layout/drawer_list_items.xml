@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView android:id="@+id/text_view_from_the_listView"
+          style="@style/AlertDialog.AppCompat"
+          xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="6dp"
+          android:layout_marginTop="15dp"
+          android:background="#fff"
+          android:clickable="true"
+          android:gravity="center_vertical"
+          android:minHeight="35sp"
+          android:padding="15dp"
+          android:text="sdsds"
+          android:textColor="#95a0e2"
+          android:textSize="15sp"
+          android:textStyle="bold">
+
+
+</TextView>
