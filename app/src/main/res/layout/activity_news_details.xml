@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ebf2f2"
 
-    tools:context=".deatils.NewsDetailsActivity">
+    tools:context=".activities.NewsDetailsActivity">
 
 
     <android.support.v7.widget.Toolbar

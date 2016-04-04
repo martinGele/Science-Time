@@ -16,8 +16,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import martingele.sciencetime.R;
-import martingele.sciencetime.animatons.AnimatonUtility;
-import martingele.sciencetime.deatils.NewsDetailsActivity;
+import martingele.sciencetime.animations.AnimatonUtility;
+import martingele.sciencetime.activities.NewsDetailsActivity;
 
 /**
  * Created by rishabh on 26-02-2016.
@@ -57,18 +57,19 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         return position;
     }
 
+    //in this view holder i bind two views, one in case there is no picture provided from the XML
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         switch (viewType) {
 
             case 1:
-                View view = LayoutInflater.from(context).inflate(R.layout.custum_row_news_item, parent, false);
+                View view = LayoutInflater.from(context).inflate(R.layout.custum_row_news_item_with_picture, parent, false);
                 MyViewHolder holder = new MyViewHolder(view);
 
                 return holder;
             case 2:
-                View view1 = LayoutInflater.from(context).inflate(R.layout.custom_tow_item1, parent, false);
+                View view1 = LayoutInflater.from(context).inflate(R.layout.custom_row_without_picture, parent, false);
                 MyViewHolder holder1 = new MyViewHolder(view1);
 
                 return holder1;
@@ -76,6 +77,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
         return null;
     }
+
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
@@ -99,14 +101,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         }
         previousPosition = position;
 
+        //setting click listiner on the card from the
+        // recycle view to push link to the other
+        // view where it will be handled on webview
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(context, NewsDetailsActivity.class);
                 intent.putExtra("Link", current.getLink());
                 context.startActivity(intent);
+
             }
         });
+
 
     }
 
@@ -138,4 +147,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             cardView = (CardView) itemView.findViewById(R.id.cardview);
         }
     }
+
+
 }

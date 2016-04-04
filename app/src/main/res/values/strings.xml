@@ -7,11 +7,11 @@
 
 
     <string-array name="items">
-        <item>all news</item>
-        <item>physics</item>
-        <item>dont know</item>
-        <item>Item 4</item>
-        <item>Item 5</item>
-        <item>Item 6</item>
+        <item>All News</item>
+        <item>Top News</item>
+
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,4 +1,4 @@
-package martingele.sciencetime;
+package martingele.sciencetime.activities;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -10,6 +10,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
+
+import martingele.sciencetime.R;
 
 public class StartingActivity extends AppCompatActivity {
 

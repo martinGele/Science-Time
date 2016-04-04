@@ -1,4 +1,4 @@
-package martingele.sciencetime;
+package martingele.sciencetime.activities;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -10,10 +10,12 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+
+import martingele.sciencetime.AdapterAndFeedItem.CustomAdapterForNavigationDrawer;
+import martingele.sciencetime.R;
+import martingele.sciencetime.ReadRssAllNews;
 
 public class AllNewsActivity extends AppCompatActivity {
 
@@ -34,9 +36,9 @@ public class AllNewsActivity extends AppCompatActivity {
 
         //invoking the async task
         readTheRss();
-
+        //all the methods for the navigation drawer
         setingUpTheToolbarAndNavigationDrawer();
-
+        // basic navigation drawer items
         gettingTheListViewForTheNavigationDrawerAndBindingItems();
 
 
@@ -49,9 +51,9 @@ public class AllNewsActivity extends AppCompatActivity {
         mActionBarDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    // run ReadRssAllNews, the parser
     public void readTheRss() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-
         bar = (ProgressBar) findViewById(R.id.progressBar);
         final ReadRssAllNews readRssAllNews = new ReadRssAllNews(this, recyclerView, bar);
         readRssAllNews.execute();
@@ -102,12 +104,16 @@ public class AllNewsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("All News");
         getSupportActionBar().setHomeButtonEnabled(true);
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
+
+
         mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_opened, R.string.drawer_close) {
 
+            /*
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -115,26 +121,41 @@ public class AllNewsActivity extends AppCompatActivity {
                     getSupportActionBar().setTitle(R.string.drawer_opened);
             }
 
+
+
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
                 if (getSupportActionBar() != null)
-                    getSupportActionBar().setTitle(R.string.drawer_close);
+
+                getSupportActionBar().setTitle(R.string.drawer_close);
 
             }
 
+
         };
+        */
+
+        };
+        mActionBarDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mActionBarDrawerToggle);
 
 
     }
 
     public void gettingTheListViewForTheNavigationDrawerAndBindingItems() {
+
+        String[] themes = {"All News", "Top News"};
+        int[] images = {R.drawable.ic_action_all_news, R.drawable.ic_action_name_top_news};
+        //custom adapter for the listview with image and text
+        CustomAdapterForNavigationDrawer adapter = new CustomAdapterForNavigationDrawer(this, themes, images);
+
         drawerListViewItems = getResources().getStringArray(R.array.items);
         listView = (ListView) findViewById(R.id.drawer_listview);
         listView.setDivider(null);
         listView.setDividerHeight(13);
-        listView.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_items, drawerListViewItems));
+        listView.setAdapter(adapter);
+
     }
 
 

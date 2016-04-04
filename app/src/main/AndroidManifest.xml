@@ -13,11 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Joni">
         <activity
-            android:name=".AllNewsActivity"
+            android:name=".activities.AllNewsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
+
         <activity
-            android:name=".StartingActivity"
+            android:name=".activities.StartingActivity"
             android:theme="@style/Joni"
             android:windowActionBar="false">
             <intent-filter>
@@ -26,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".deatils.NewsDetailsActivity">
+        <activity android:name=".activities.NewsDetailsActivity">
         </activity>
     </application>
 

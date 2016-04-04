@@ -1,4 +1,4 @@
-package martingele.sciencetime.deatils;
+package martingele.sciencetime.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,6 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
-import martingele.sciencetime.AllNewsActivity;
 import martingele.sciencetime.R;
 
 public class NewsDetailsActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package martingele.sciencetime.animatons;
+package martingele.sciencetime.animations;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
