@@ -16,7 +16,6 @@
             android:name=".activities.AllNewsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
-
         <activity
             android:name=".activities.StartingActivity"
             android:theme="@style/Joni"
@@ -28,6 +27,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.NewsDetailsActivity">
+        </activity>
+        <activity android:name=".activities.PopUpActivity" android:theme="@style/AppTheme.CustomTheme"
+            >
         </activity>
     </application>
 

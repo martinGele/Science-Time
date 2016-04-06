@@ -16,8 +16,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import martingele.sciencetime.R;
+import martingele.sciencetime.activities.PopUpActivity;
 import martingele.sciencetime.animations.AnimatonUtility;
-import martingele.sciencetime.activities.NewsDetailsActivity;
 
 /**
  * Created by rishabh on 26-02-2016.
@@ -25,6 +25,7 @@ import martingele.sciencetime.activities.NewsDetailsActivity;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     ArrayList<FeedItem> feedItems;
     Context context;
+    // public static FeedItem current;
 
 
     private int previousPosition = 0;
@@ -81,12 +82,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
         final FeedItem current = feedItems.get(position);
         holder.Title.setText(current.getTitle());
         holder.Description.setText(current.getDescription());
         holder.Date.setText(current.getPubDate());
         Picasso.with(context).load(current.getThumbnailUrl()).resize(90, 90).into(holder.Thumbnail);
+
 
         //this will handle clicks from the recycleView
 
@@ -109,10 +110,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(context, PopUpActivity.class);
+                intent.putExtra("Description", current.getDescription());
+                intent.putExtra("Link", current.getLink());
+                intent.putExtra("Image", current.getThumbnailUrl());
+                intent.putExtra("Title", current.getTitle());
+
+                context.startActivity(intent);
+
+
+               /*
                 Intent intent = new Intent(context, NewsDetailsActivity.class);
                 intent.putExtra("Link", current.getLink());
                 context.startActivity(intent);
 
+                */
             }
         });
 

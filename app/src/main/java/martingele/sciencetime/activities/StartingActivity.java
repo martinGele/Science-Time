@@ -44,7 +44,7 @@ public class StartingActivity extends AppCompatActivity {
 // message toast
                 ) {
             Log.e("cm value", "" + cm.getAllNetworkInfo().toString());
-            Toast.makeText(StartingActivity.this, "nice you have net ", 2000)
+            Toast.makeText(StartingActivity.this, "net! ", 2000)
                     .show();
             Thread mythread = new Thread() {
                 public void run() {

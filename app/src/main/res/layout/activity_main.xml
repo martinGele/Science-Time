@@ -16,19 +16,20 @@
         android:minHeight="?android:attr/actionBarSize"
         />
 
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:indeterminateTint="@color/colorPrimary"
-        android:visibility="invisible"/>
 
+        android:visibility="invisible"/>
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawerlayout"
         android:layout_width="match_parent"
+        android:background="#ebf2f2"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar">
 
@@ -46,7 +47,7 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ebf2f2">
+          >
 
         </android.support.v7.widget.RecyclerView>
 

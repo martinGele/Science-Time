@@ -1,7 +1,12 @@
 package martingele.sciencetime.activities;
 
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -15,15 +20,16 @@ import android.widget.ProgressBar;
 
 import martingele.sciencetime.AdapterAndFeedItem.CustomAdapterForNavigationDrawer;
 import martingele.sciencetime.R;
-import martingele.sciencetime.ReadRssAllNews;
+import martingele.sciencetime.rss_readers.ReadRssAllNews;
 
-public class AllNewsActivity extends AppCompatActivity {
+public class AllNewsActivity extends AppCompatActivity  {
 
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mActionBarDrawerToggle;
     RecyclerView recyclerView;
     ProgressBar bar;
+    Handler handler;
 
     private ListView listView;
     private String[] drawerListViewItems;
@@ -34,12 +40,25 @@ public class AllNewsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        //invoking the async task
-        readTheRss();
+        handler = new Handler();
+
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                //invoking the async task
+                readTheRss();
+
+            }
+        };
+
+        handler.postDelayed(runnable, 1000);
+
+
         //all the methods for the navigation drawer
         setingUpTheToolbarAndNavigationDrawer();
         // basic navigation drawer items
         gettingTheListViewForTheNavigationDrawerAndBindingItems();
+
 
 
     }
@@ -91,6 +110,9 @@ public class AllNewsActivity extends AppCompatActivity {
 
         if (id == R.id.source) {
 
+            Intent intent = new Intent(AllNewsActivity.this, PopUpActivity.class);
+            startActivity(intent);
+
             return true;
         }
 
@@ -112,7 +134,6 @@ public class AllNewsActivity extends AppCompatActivity {
 
 
         mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_opened, R.string.drawer_close) {
-
             /*
             @Override
             public void onDrawerOpened(View drawerView) {
@@ -120,19 +141,13 @@ public class AllNewsActivity extends AppCompatActivity {
                 if (getSupportActionBar() != null)
                     getSupportActionBar().setTitle(R.string.drawer_opened);
             }
-
-
-
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
                 if (getSupportActionBar() != null)
 
                 getSupportActionBar().setTitle(R.string.drawer_close);
-
             }
-
-
         };
         */
 

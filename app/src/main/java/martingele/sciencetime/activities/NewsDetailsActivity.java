@@ -32,7 +32,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_detail);
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_action_back);
-        ;
+
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -48,9 +48,11 @@ public class NewsDetailsActivity extends AppCompatActivity {
         });
         DealingWIthWebView();
 
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(NewsDetailsActivity.this, AllNewsActivity.class);
                 startActivity(intent);
             }
@@ -63,6 +65,8 @@ public class NewsDetailsActivity extends AppCompatActivity {
     //webView object and all the methods that are invoked
     public void DealingWIthWebView() {
         web.getSettings().setJavaScriptEnabled(true);
+        web.getSettings().setLoadWithOverviewMode(true);
+        web.setInitialScale(150);
         web.setWebChromeClient(new WebChromeClient() {
 
             public void onProgressChanged(WebView view, int progress) {
@@ -121,6 +125,14 @@ public class NewsDetailsActivity extends AppCompatActivity {
         share.putExtra(Intent.EXTRA_TEXT, bundle.getString("Link"));
 
         startActivity(Intent.createChooser(share, "Share link!"));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent intent = new Intent(NewsDetailsActivity.this, AllNewsActivity.class);
+        startActivity(intent);
     }
 
 }

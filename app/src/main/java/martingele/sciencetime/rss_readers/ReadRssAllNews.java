@@ -1,4 +1,4 @@
-package martingele.sciencetime;
+package martingele.sciencetime.rss_readers;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -22,6 +22,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import martingele.sciencetime.AdapterAndFeedItem.FeedItem;
 import martingele.sciencetime.AdapterAndFeedItem.MyAdapter;
+import martingele.sciencetime.VerticalSpace;
 
 /**
  * Created by rishabh on 31-01-2016.
