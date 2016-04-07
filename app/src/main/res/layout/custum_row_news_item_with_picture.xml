@@ -50,9 +50,9 @@
             android:paddingLeft="14dp"
             android:paddingTop="8dp"
             android:text="Msdsds"
-            android:textColor="#1c3743"
+            android:textColor="@color/colorTitle"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            />
 
 
         <TextView

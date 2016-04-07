@@ -11,9 +11,9 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/toolbarHeight"
         android:background="@color/colorPrimary"
-        android:minHeight="?android:attr/actionBarSize"
+
         />
 
 
@@ -29,9 +29,9 @@
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawerlayout"
         android:layout_width="match_parent"
-        android:background="#ebf2f2"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar">
+        android:layout_below="@+id/toolbar"
+        android:background="#ebf2f2">
 
         <ListView
             android:id="@+id/drawer_listview"
@@ -47,7 +47,7 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-          >
+            >
 
         </android.support.v7.widget.RecyclerView>
 

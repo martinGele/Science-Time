@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#f7fafffe"
     android:orientation="vertical"
+
     tools:context=".activities.AllNewsActivity">
 
 
@@ -15,24 +16,23 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:background="#f7fafffe"
-        android:padding="5dp"
+        android:padding="10dp"
         android:src="@drawable/ic_action_x"/>
 
 
     <TextView
+
         android:id="@+id/text_title1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/description_pop_up"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:layout_weight="0.5"
+        android:layout_weight="0.4"
         android:gravity="center|top"
-
         android:padding="5dp"
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#1c3743"/>
+        android:textColor="#131516"/>
 
     <TextView
         android:id="@+id/description_pop_up"
@@ -40,18 +40,20 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginTop="6dp"
         android:layout_weight="1"
-        android:fontFamily="sans-serif"
-        android:padding="5dp"
+
+        android:padding="4dp"
         android:text="Medium Text"
-        android:textSize="16sp"
+        android:textColor="#707c80"
+        android:textSize="14sp"
         android:textStyle="normal"/>
 
 
     <Button
         android:id="@+id/button_read_story"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/buttonHeight"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"

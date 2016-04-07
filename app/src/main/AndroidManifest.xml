@@ -28,8 +28,11 @@
         </activity>
         <activity android:name=".activities.NewsDetailsActivity">
         </activity>
-        <activity android:name=".activities.PopUpActivity" android:theme="@style/AppTheme.CustomTheme"
-            >
+        <activity
+            android:name=".activities.PopUpActivity"
+            android:theme="@style/AppTheme.CustomTheme">
+        </activity>
+        <activity android:name=".activities.TopNewsActivity">
         </activity>
     </application>
 

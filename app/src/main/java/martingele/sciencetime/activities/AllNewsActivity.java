@@ -2,9 +2,6 @@ package martingele.sciencetime.activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -22,7 +19,7 @@ import martingele.sciencetime.AdapterAndFeedItem.CustomAdapterForNavigationDrawe
 import martingele.sciencetime.R;
 import martingele.sciencetime.rss_readers.ReadRssAllNews;
 
-public class AllNewsActivity extends AppCompatActivity  {
+public class AllNewsActivity extends AppCompatActivity {
 
 
     private DrawerLayout mDrawerLayout;
@@ -58,7 +55,6 @@ public class AllNewsActivity extends AppCompatActivity  {
         setingUpTheToolbarAndNavigationDrawer();
         // basic navigation drawer items
         gettingTheListViewForTheNavigationDrawerAndBindingItems();
-
 
 
     }
@@ -110,7 +106,7 @@ public class AllNewsActivity extends AppCompatActivity  {
 
         if (id == R.id.source) {
 
-            Intent intent = new Intent(AllNewsActivity.this, PopUpActivity.class);
+            Intent intent = new Intent(AllNewsActivity.this, TopNewsActivity.class);
             startActivity(intent);
 
             return true;

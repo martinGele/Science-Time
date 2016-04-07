@@ -30,9 +30,9 @@
             android:lines="2"
             android:padding="2dp"
             android:text="Msdsds"
-            android:textColor="#1c3743"
+            android:textColor="@color/colorTitle"
             android:textSize="20sp"
-            android:textStyle="bold"
+
             />
 
 
@@ -49,7 +49,7 @@
             android:layout_toEndOf="@+id/thumb_img"
             android:layout_toRightOf="@+id/thumb_img"
             android:layout_weight="0.76"
-            android:fontFamily="sans-serif"
+            android:textColor="@color/colorDescription"
             android:gravity="left"
             android:lines="3"
 
