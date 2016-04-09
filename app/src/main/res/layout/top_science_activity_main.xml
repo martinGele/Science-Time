@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activities.AllNewsActivity">
+    tools:context=".activities.TopScienceNewsActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -16,29 +14,23 @@
 
         />
 
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-
-        android:visibility="invisible"/>
-
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawerlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
-        android:background="#ebf2f2">
+        android:clickable="true"
+        >
+
 
         <ListView
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:id="@+id/drawer_listview"
             android:layout_width="240dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-
             android:background="#fff"
             />
 
@@ -53,6 +45,15 @@
 
 
     </android.support.v4.widget.DrawerLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+
+        android:visibility="invisible"/>
 
 
 </RelativeLayout>

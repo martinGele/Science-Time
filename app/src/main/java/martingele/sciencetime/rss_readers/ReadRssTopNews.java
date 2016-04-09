@@ -27,16 +27,16 @@ import martingele.sciencetime.VerticalSpace;
 /**
  * Created by rishabh on 31-01-2016.
  */
-public class ReadRssAllNews extends AsyncTask<Void, Void, Void> {
+public class ReadRssTopNews extends AsyncTask<Void, Void, Void> {
     Context context;
-    public static String address = "https://rss.sciencedaily.com/all.xml";
+    public static String address = "https://rss.sciencedaily.com/top.xml";
 
     ArrayList<FeedItem> feedItems;
     RecyclerView recyclerView;
     URL url;
     ProgressBar bar;
 
-    public ReadRssAllNews(Context context, RecyclerView recyclerView, ProgressBar bar) {
+    public ReadRssTopNews(Context context, RecyclerView recyclerView, ProgressBar bar) {
         this.recyclerView = recyclerView;
         this.context = context;
         this.bar = bar;
@@ -44,7 +44,7 @@ public class ReadRssAllNews extends AsyncTask<Void, Void, Void> {
     }
 
 
-    public ReadRssAllNews(Runnable runnable, RecyclerView recyclerView2) {
+    public ReadRssTopNews(Runnable runnable, RecyclerView recyclerView2) {
 
     }
 

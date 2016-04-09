@@ -88,7 +88,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.Date.setText(current.getPubDate());
         Picasso.with(context).load(current.getThumbnailUrl()).resize(90, 90).into(holder.Thumbnail);
 
-
         //this will handle clicks from the recycleView
 
         if (position > previousPosition) { // We are scrolling DOWN
@@ -101,6 +100,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         }
         previousPosition = position;
+
 
         //setting click listiner on the card from the
         // recycle view to push link to the other
@@ -117,14 +117,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 intent.putExtra("Title", current.getTitle());
 
                 context.startActivity(intent);
-
-
-               /*
-                Intent intent = new Intent(context, NewsDetailsActivity.class);
-                intent.putExtra("Link", current.getLink());
-                context.startActivity(intent);
-
-                */
             }
         });
 
@@ -149,9 +141,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         ImageView Thumbnail;
         CardView cardView;
 
+
         public MyViewHolder(View itemView) {
             super(itemView);
-
             Title = (TextView) itemView.findViewById(R.id.title_text);
             Description = (TextView) itemView.findViewById(R.id.description_text);
             Date = (TextView) itemView.findViewById(R.id.date_text);

@@ -1,6 +1,5 @@
 package martingele.sciencetime.activities;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,14 +11,18 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import martingele.sciencetime.AdapterAndFeedItem.CustomAdapterForNavigationDrawer;
 import martingele.sciencetime.R;
-import martingele.sciencetime.rss_readers.ReadRssAllNews;
+import martingele.sciencetime.rss_readers.ReadRssTopScienceNews;
 
-public class AllNewsActivity extends AppCompatActivity {
+
+public class TopScienceNewsActivity extends AppCompatActivity {
 
 
     private DrawerLayout mDrawerLayout;
@@ -34,9 +37,10 @@ public class AllNewsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.top_science_activity_main);
 
 
+        gettingTheListViewForTheNavigationDrawerAndBindingItems();
         handler = new Handler();
 
         final Runnable runnable = new Runnable() {
@@ -54,7 +58,6 @@ public class AllNewsActivity extends AppCompatActivity {
         //all the methods for the navigation drawer
         setingUpTheToolbarAndNavigationDrawer();
         // basic navigation drawer items
-        gettingTheListViewForTheNavigationDrawerAndBindingItems();
 
 
     }
@@ -70,7 +73,7 @@ public class AllNewsActivity extends AppCompatActivity {
     public void readTheRss() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         bar = (ProgressBar) findViewById(R.id.progressBar);
-        final ReadRssAllNews readRssAllNews = new ReadRssAllNews(this, recyclerView, bar);
+        final ReadRssTopScienceNews readRssAllNews = new ReadRssTopScienceNews(this, recyclerView, bar);
         readRssAllNews.execute();
 
     }
@@ -106,8 +109,6 @@ public class AllNewsActivity extends AppCompatActivity {
 
         if (id == R.id.source) {
 
-            Intent intent = new Intent(AllNewsActivity.this, TopNewsActivity.class);
-            startActivity(intent);
 
             return true;
         }
@@ -116,6 +117,38 @@ public class AllNewsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    public void gettingTheListViewForTheNavigationDrawerAndBindingItems() {
+
+        String[] themes = {"All News", "Top News"};
+        int[] images = {R.drawable.ic_action_all_news, R.drawable.ic_action_name_top_news};
+        //custom adapter for the listview with image and text
+        CustomAdapterForNavigationDrawer adapter = new CustomAdapterForNavigationDrawer(this, themes, images);
+        listView = (ListView) findViewById(R.id.drawer_listview);
+        listView.setDivider(null);
+        listView.setDividerHeight(13);
+        listView.setAdapter(adapter);
+       this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        Toast.makeText(getApplicationContext(), "Hello Javatpoint", Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case 1:
+                        finish();
+                        break;
+
+
+                    default:
+                        break;
+                }
+            }
+        });
+
+
+    }
 
     public void setingUpTheToolbarAndNavigationDrawer() {
 
@@ -127,6 +160,8 @@ public class AllNewsActivity extends AppCompatActivity {
 
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
+        listView.bringToFront();
+        mDrawerLayout.requestLayout();
 
 
         mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_opened, R.string.drawer_close) {
@@ -141,7 +176,6 @@ public class AllNewsActivity extends AppCompatActivity {
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
                 if (getSupportActionBar() != null)
-
                 getSupportActionBar().setTitle(R.string.drawer_close);
             }
         };
@@ -151,21 +185,6 @@ public class AllNewsActivity extends AppCompatActivity {
         mActionBarDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mActionBarDrawerToggle);
 
-
-    }
-
-    public void gettingTheListViewForTheNavigationDrawerAndBindingItems() {
-
-        String[] themes = {"All News", "Top News"};
-        int[] images = {R.drawable.ic_action_all_news, R.drawable.ic_action_name_top_news};
-        //custom adapter for the listview with image and text
-        CustomAdapterForNavigationDrawer adapter = new CustomAdapterForNavigationDrawer(this, themes, images);
-
-        drawerListViewItems = getResources().getStringArray(R.array.items);
-        listView = (ListView) findViewById(R.id.drawer_listview);
-        listView.setDivider(null);
-        listView.setDividerHeight(13);
-        listView.setAdapter(adapter);
 
     }
 

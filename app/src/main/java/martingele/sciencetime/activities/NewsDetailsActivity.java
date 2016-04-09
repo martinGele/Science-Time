@@ -53,7 +53,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(NewsDetailsActivity.this, AllNewsActivity.class);
+                Intent intent = new Intent(NewsDetailsActivity.this, TopScienceNewsActivity.class);
                 startActivity(intent);
             }
         });
@@ -131,7 +131,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent = new Intent(NewsDetailsActivity.this, AllNewsActivity.class);
+        Intent intent = new Intent(NewsDetailsActivity.this, TopScienceNewsActivity.class);
         startActivity(intent);
     }
 

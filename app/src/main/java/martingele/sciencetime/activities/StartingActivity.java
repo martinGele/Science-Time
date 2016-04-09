@@ -55,7 +55,7 @@ public class StartingActivity extends AppCompatActivity {
                     } catch (Exception e) {
                     } finally {
                         Intent intent = new Intent(StartingActivity.this,
-                                AllNewsActivity.class);
+                                TopScienceNewsActivity.class);
                         startActivity(intent);
                         finish();
                     }
