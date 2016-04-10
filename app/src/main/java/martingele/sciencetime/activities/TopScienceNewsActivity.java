@@ -1,6 +1,10 @@
 package martingele.sciencetime.activities;
 
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -9,17 +13,17 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import martingele.sciencetime.AdapterAndFeedItem.CustomAdapterForNavigationDrawer;
 import martingele.sciencetime.R;
-import martingele.sciencetime.rss_readers.ReadRssTopScienceNews;
+import martingele.sciencetime.rss_readers.ReadRssTopNews;
 
 
 public class TopScienceNewsActivity extends AppCompatActivity {
@@ -31,8 +35,8 @@ public class TopScienceNewsActivity extends AppCompatActivity {
     ProgressBar bar;
     Handler handler;
 
+
     private ListView listView;
-    private String[] drawerListViewItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +77,7 @@ public class TopScienceNewsActivity extends AppCompatActivity {
     public void readTheRss() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         bar = (ProgressBar) findViewById(R.id.progressBar);
-        final ReadRssTopScienceNews readRssAllNews = new ReadRssTopScienceNews(this, recyclerView, bar);
+        final ReadRssTopNews readRssAllNews = new ReadRssTopNews(this, recyclerView, bar);
         readRssAllNews.execute();
 
     }
@@ -118,29 +122,50 @@ public class TopScienceNewsActivity extends AppCompatActivity {
     }
 
 
+    @TargetApi(Build.VERSION_CODES.M)
     public void gettingTheListViewForTheNavigationDrawerAndBindingItems() {
 
-        String[] themes = {"All News", "Top News"};
-        int[] images = {R.drawable.ic_action_all_news, R.drawable.ic_action_name_top_news};
+        String[] themes = {"Top Science", "Top News", "Health", "Technology", "Environment", "Society", "Most Popular"};
+        int[] images = {R.drawable.ic_action_all_news,
+                R.drawable.ic_action_name_top_news,
+                R.drawable.ic_action_health,
+                R.drawable.ic_action_technology,
+                R.drawable.ic_action_enviorment,
+                R.drawable.ic_action_society,
+                R.drawable.ic_action_popular};
         //custom adapter for the listview with image and text
         CustomAdapterForNavigationDrawer adapter = new CustomAdapterForNavigationDrawer(this, themes, images);
         listView = (ListView) findViewById(R.id.drawer_listview);
         listView.setDivider(null);
-        listView.setDividerHeight(13);
+        listView.setDividerHeight(20);
         listView.setAdapter(adapter);
-       this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+        View footerView = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
+        listView.addFooterView(footerView);
+        footerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        Toast.makeText(getApplicationContext(), "Hello Javatpoint", Toast.LENGTH_SHORT).show();
-
+                        Intent intent = new Intent(TopScienceNewsActivity.this, TopScienceNewsActivity.class);
+                        startActivity(intent);
                         break;
                     case 1:
-                        finish();
+                        Intent intent1 = new Intent(TopScienceNewsActivity.this, TopNewsActivity.class);
+                        startActivity(intent1);
+
                         break;
-
-
+                    case 2:
+                        Intent intent2 = new Intent(TopScienceNewsActivity.this, HealthNewsActivity.class);
+                        startActivity(intent2);
+                        break;
                     default:
                         break;
                 }
@@ -155,7 +180,7 @@ public class TopScienceNewsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("All News");
+        getSupportActionBar().setTitle("Top Science News");
         getSupportActionBar().setHomeButtonEnabled(true);
 
 

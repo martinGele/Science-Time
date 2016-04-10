@@ -19,10 +19,12 @@ public class StartingActivity extends AppCompatActivity {
     AlertDialog dailog;
     AlertDialog.Builder build;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting);
+
 
         checkConncetion();
     }
@@ -44,7 +46,7 @@ public class StartingActivity extends AppCompatActivity {
 // message toast
                 ) {
             Log.e("cm value", "" + cm.getAllNetworkInfo().toString());
-            Toast.makeText(StartingActivity.this, "net! ", 2000)
+            Toast.makeText(StartingActivity.this, "net! ", 1500)
                     .show();
             Thread mythread = new Thread() {
                 public void run() {

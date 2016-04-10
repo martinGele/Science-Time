@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    package="martingele.sciencetime"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest package="martingele.sciencetime"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -19,6 +18,7 @@
         </activity>
         <activity
             android:name=".activities.StartingActivity"
+            android:hardwareAccelerated="false"
             android:theme="@style/Joni"
             android:windowActionBar="false">
             <intent-filter>
@@ -32,6 +32,10 @@
         <activity
             android:name=".activities.PopUpActivity"
             android:theme="@style/AppTheme.CustomTheme">
+        </activity>
+        <activity android:name=".activities.TopNewsActivity">
+        </activity>
+        <activity android:name=".activities.HealthNewsActivity">
         </activity>
     </application>
 
