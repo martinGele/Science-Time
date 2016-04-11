@@ -21,10 +21,9 @@ import android.widget.ProgressBar;
 
 import martingele.sciencetime.AdapterAndFeedItem.CustomAdapterForNavigationDrawer;
 import martingele.sciencetime.R;
-import martingele.sciencetime.rss_readers.ReadRssHealth;
+import martingele.sciencetime.rss_readers.ReadRssSociety;
 
-
-public class HealthNewsActivity extends AppCompatActivity {
+public class SocietyNewsActivity extends AppCompatActivity {
 
 
     private DrawerLayout mDrawerLayout;
@@ -32,14 +31,12 @@ public class HealthNewsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ProgressBar bar;
     Handler handler;
-
-
     private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_health_news);
+        setContentView(R.layout.activity_society_news);
 
 
         gettingTheListViewForTheNavigationDrawerAndBindingItems();
@@ -75,7 +72,7 @@ public class HealthNewsActivity extends AppCompatActivity {
     public void readTheRss() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         bar = (ProgressBar) findViewById(R.id.progressBar);
-        final ReadRssHealth readRssAllNews = new ReadRssHealth(this, recyclerView, bar);
+        final ReadRssSociety readRssAllNews = new ReadRssSociety(this, recyclerView, bar);
         readRssAllNews.execute();
 
     }
@@ -91,7 +88,6 @@ public class HealthNewsActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         System.exit(0);
-
         finish();
     }
 
@@ -151,36 +147,37 @@ public class HealthNewsActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        Intent intent = new Intent(HealthNewsActivity.this, TopScienceNewsActivity.class);
+                        Intent intent = new Intent(SocietyNewsActivity.this, TopScienceNewsActivity.class);
                         startActivity(intent);
                         break;
                     case 1:
-                        Intent intent1 = new Intent(HealthNewsActivity.this, TopNewsActivity.class);
+                        Intent intent1 = new Intent(SocietyNewsActivity.this, TopNewsActivity.class);
                         startActivity(intent1);
 
                         break;
-                    case 2:
-                        Intent intent2 = new Intent(HealthNewsActivity.this, HealthNewsActivity.class);
-                        startActivity(intent2);
-                        break;
 
+                    case 2:
+                        Intent intent2 = new Intent(SocietyNewsActivity.this, HealthNewsActivity.class);
+                        startActivity(intent2);
+
+                        break;
                     case 3:
-                        Intent intent3 = new Intent(HealthNewsActivity.this, TechnologyNewsActivity.class);
+                        Intent intent3 = new Intent(SocietyNewsActivity.this, TechnologyNewsActivity.class);
                         startActivity(intent3);
                         break;
                     case 4:
-                        Intent intent4 = new Intent(HealthNewsActivity.this, EnviormentNewsActivity.class);
+                        Intent intent4 = new Intent(SocietyNewsActivity.this, EnviormentNewsActivity.class);
                         startActivity(intent4);
                         break;
+
                     case 5:
-                        Intent intent5 = new Intent(HealthNewsActivity.this, SocietyNewsActivity.class);
+                        Intent intent5 = new Intent(SocietyNewsActivity.this, SocietyNewsActivity.class);
                         startActivity(intent5);
                         break;
                     case 6:
-                        Intent intent6 = new Intent(HealthNewsActivity.this, MostPopularNewsActivity.class);
+                        Intent intent6 = new Intent(SocietyNewsActivity.this, MostPopularNewsActivity.class);
                         startActivity(intent6);
                         break;
-
                     default:
                         break;
                 }
@@ -195,7 +192,7 @@ public class HealthNewsActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Health News");
+        getSupportActionBar().setTitle("Society");
         getSupportActionBar().setHomeButtonEnabled(true);
 
 
@@ -230,3 +227,5 @@ public class HealthNewsActivity extends AppCompatActivity {
 
 
 }
+
+

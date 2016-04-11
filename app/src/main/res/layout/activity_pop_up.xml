@@ -51,11 +51,12 @@
 
     <Button
         android:id="@+id/button_read_story"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/buttonHeight"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
+        android:layout_margin="10dp"
         android:layout_marginBottom="10dp"
         android:background="@color/colorPrimary"
         android:text="Read Story"/>

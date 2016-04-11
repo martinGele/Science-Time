@@ -33,9 +33,30 @@
             android:name=".activities.PopUpActivity"
             android:theme="@style/AppTheme.CustomTheme">
         </activity>
-        <activity android:name=".activities.TopNewsActivity">
+        <activity
+            android:name=".activities.TopNewsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
-        <activity android:name=".activities.HealthNewsActivity">
+        <activity
+            android:name=".activities.HealthNewsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+        <activity
+            android:name=".activities.TechnologyNewsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+        <activity
+            android:name=".activities.EnviormentNewsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+        <activity
+            android:name=".activities.SocietyNewsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+        <activity
+            android:name=".activities.MostPopularNewsActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            >
         </activity>
     </application>
 

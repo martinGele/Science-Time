@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import martingele.sciencetime.AdapterAndFeedItem.CustomAdapterForNavigationDrawer;
 import martingele.sciencetime.R;
@@ -92,6 +94,8 @@ public class TopScienceNewsActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        System.exit(0);
+
         finish();
     }
 
@@ -140,14 +144,9 @@ public class TopScienceNewsActivity extends AppCompatActivity {
         listView.setDividerHeight(20);
         listView.setAdapter(adapter);
 
-        View footerView = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout, null, false);
+        View footerView = ((LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.footer_layout_with_cockie, null, false);
         listView.addFooterView(footerView);
-        footerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
 
         this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -166,6 +165,25 @@ public class TopScienceNewsActivity extends AppCompatActivity {
                         Intent intent2 = new Intent(TopScienceNewsActivity.this, HealthNewsActivity.class);
                         startActivity(intent2);
                         break;
+                    case 3:
+                        Intent intent3 = new Intent(TopScienceNewsActivity.this, TechnologyNewsActivity.class);
+                        startActivity(intent3);
+                        break;
+
+                    case 4:
+                        Intent intent4 = new Intent(TopScienceNewsActivity.this, EnviormentNewsActivity.class);
+                        startActivity(intent4);
+                        break;
+                    case 5:
+                        Intent intent5 = new Intent(TopScienceNewsActivity.this, SocietyNewsActivity.class);
+                        startActivity(intent5);
+                        break;
+                    case 6:
+                        Intent intent6 = new Intent(TopScienceNewsActivity.this, MostPopularNewsActivity.class);
+                        startActivity(intent6);
+                        break;
+
+
                     default:
                         break;
                 }
@@ -187,6 +205,8 @@ public class TopScienceNewsActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
         listView.bringToFront();
         mDrawerLayout.requestLayout();
+        //handeling the footer clicks
+        footerClicks();
 
 
         mActionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_opened, R.string.drawer_close) {
@@ -210,6 +230,33 @@ public class TopScienceNewsActivity extends AppCompatActivity {
         mActionBarDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mActionBarDrawerToggle);
 
+
+    }
+
+    //handeling the footer clicks
+    public void footerClicks() {
+
+        TextView exit, cookie;
+        exit = (TextView) findViewById(R.id.exit);
+        cookie = (TextView) findViewById(R.id.link_to_email);
+
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        cookie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String url = "https://www.facebook.com/martin.gele";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setFlags(Intent.FLAG_ACTIVITY_PREVIOUS_IS_TOP);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
 
     }
 

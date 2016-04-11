@@ -86,6 +86,8 @@ public class TopNewsActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        System.exit(0);
+
         finish();
     }
 
@@ -159,6 +161,23 @@ public class TopNewsActivity extends AppCompatActivity {
                         startActivity(intent2);
 
                         break;
+                    case 3:
+                        Intent intent3 = new Intent(TopNewsActivity.this, TechnologyNewsActivity.class);
+                        startActivity(intent3);
+                        break;
+                    case 4:
+                        Intent intent4 = new Intent(TopNewsActivity.this, EnviormentNewsActivity.class);
+                        startActivity(intent4);
+                        break;
+                    case 5:
+                        Intent intent5 = new Intent(TopNewsActivity.this, SocietyNewsActivity.class);
+                        startActivity(intent5);
+                        break;
+                    case 6:
+                        Intent intent6 = new Intent(TopNewsActivity.this, MostPopularNewsActivity.class);
+                        startActivity(intent6);
+                        break;
+
 
                     default:
                         break;
