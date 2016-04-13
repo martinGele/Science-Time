@@ -135,4 +135,5 @@ public class NewsDetailsActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
 }

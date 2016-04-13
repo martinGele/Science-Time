@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -25,10 +26,10 @@ import android.widget.TextView;
 
 import martingele.sciencetime.AdapterAndFeedItem.CustomAdapterForNavigationDrawer;
 import martingele.sciencetime.R;
-import martingele.sciencetime.rss_readers.ReadRssTopNews;
+import martingele.sciencetime.rss_readers.ReadRssTopScienceNews;
 
 
-public class TopScienceNewsActivity extends AppCompatActivity {
+public class TopScienceNewsActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
 
     private DrawerLayout mDrawerLayout;
@@ -36,6 +37,7 @@ public class TopScienceNewsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ProgressBar bar;
     Handler handler;
+    SwipeRefreshLayout swipeRefreshLayout;
 
 
     private ListView listView;
@@ -64,7 +66,8 @@ public class TopScienceNewsActivity extends AppCompatActivity {
         //all the methods for the navigation drawer
         setingUpTheToolbarAndNavigationDrawer();
         // basic navigation drawer items
-
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
+        swipeRefreshLayout.setOnRefreshListener(this);
 
     }
 
@@ -79,10 +82,11 @@ public class TopScienceNewsActivity extends AppCompatActivity {
     public void readTheRss() {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         bar = (ProgressBar) findViewById(R.id.progressBar);
-        final ReadRssTopNews readRssAllNews = new ReadRssTopNews(this, recyclerView, bar);
+        final ReadRssTopScienceNews readRssAllNews = new ReadRssTopScienceNews(this, recyclerView, bar);
         readRssAllNews.execute();
 
     }
+
 
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
@@ -260,5 +264,21 @@ public class TopScienceNewsActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onRefresh() {
+
+
+        ReadRssTopScienceNews read = new ReadRssTopScienceNews(this, recyclerView, bar);
+        read.execute();
+
+
+        if (swipeRefreshLayout.isRefreshing()) {
+
+            swipeRefreshLayout.setRefreshing(false);
+        }
+
+
+    }
 
 }

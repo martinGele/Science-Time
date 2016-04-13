@@ -61,7 +61,6 @@ public class ReadRssEnviorment extends AsyncTask<Void, Void, Void> {
         bar.setVisibility(View.INVISIBLE);
         MyAdapter adapter = new MyAdapter(context, feedItems);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new VerticalSpace(10));
         recyclerView.setAdapter(adapter);
 
     }

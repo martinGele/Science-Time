@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +25,7 @@ import martingele.sciencetime.R;
 import martingele.sciencetime.rss_readers.ReadRssTechnology;
 
 
-public class TechnologyNewsActivity extends AppCompatActivity {
+public class TechnologyNewsActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
 
     private DrawerLayout mDrawerLayout;
@@ -35,6 +36,7 @@ public class TechnologyNewsActivity extends AppCompatActivity {
 
 
     private ListView listView;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +61,9 @@ public class TechnologyNewsActivity extends AppCompatActivity {
 
         //all the methods for the navigation drawer
         setingUpTheToolbarAndNavigationDrawer();
-        // basic navigation drawer items
 
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
+        swipeRefreshLayout.setOnRefreshListener(this);
 
     }
 
@@ -227,6 +230,21 @@ public class TechnologyNewsActivity extends AppCompatActivity {
         mActionBarDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mActionBarDrawerToggle);
 
+
+    }
+
+
+    @Override
+    public void onRefresh() {
+
+        ReadRssTechnology read = new ReadRssTechnology(this, recyclerView, bar);
+        read.execute();
+
+
+        if (swipeRefreshLayout.isRefreshing()) {
+
+            swipeRefreshLayout.setRefreshing(false);
+        }
 
     }
 

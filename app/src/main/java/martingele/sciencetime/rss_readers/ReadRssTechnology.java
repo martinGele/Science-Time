@@ -22,7 +22,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import martingele.sciencetime.AdapterAndFeedItem.FeedItem;
 import martingele.sciencetime.AdapterAndFeedItem.MyAdapter;
-import martingele.sciencetime.VerticalSpace;
 
 /**
  * Created by rishabh on 31-01-2016.
@@ -60,7 +59,6 @@ public class ReadRssTechnology extends AsyncTask<Void, Void, Void> {
         bar.setVisibility(View.INVISIBLE);
         MyAdapter adapter = new MyAdapter(context, feedItems);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new VerticalSpace(10));
         recyclerView.setAdapter(adapter);
 
     }

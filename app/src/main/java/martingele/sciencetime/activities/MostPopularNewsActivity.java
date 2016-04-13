@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -23,7 +24,7 @@ import martingele.sciencetime.AdapterAndFeedItem.CustomAdapterForNavigationDrawe
 import martingele.sciencetime.R;
 import martingele.sciencetime.rss_readers.ReadRssMostPopular;
 
-public class MostPopularNewsActivity extends AppCompatActivity {
+public class MostPopularNewsActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
 
     private DrawerLayout mDrawerLayout;
@@ -32,6 +33,7 @@ public class MostPopularNewsActivity extends AppCompatActivity {
     ProgressBar bar;
     Handler handler;
     private ListView listView;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +58,9 @@ public class MostPopularNewsActivity extends AppCompatActivity {
 
         //all the methods for the navigation drawer
         setingUpTheToolbarAndNavigationDrawer();
-        // basic navigation drawer items
 
+        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
+        swipeRefreshLayout.setOnRefreshListener(this);
 
     }
 
@@ -223,6 +226,21 @@ public class MostPopularNewsActivity extends AppCompatActivity {
         mActionBarDrawerToggle.syncState();
         mDrawerLayout.setDrawerListener(mActionBarDrawerToggle);
 
+
+    }
+
+
+    @Override
+    public void onRefresh() {
+
+        ReadRssMostPopular read = new ReadRssMostPopular(this, recyclerView, bar);
+        read.execute();
+
+
+        if (swipeRefreshLayout.isRefreshing()) {
+
+            swipeRefreshLayout.setRefreshing(false);
+        }
 
     }
 
