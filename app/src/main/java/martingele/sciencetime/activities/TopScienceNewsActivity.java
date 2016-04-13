@@ -247,7 +247,12 @@ public class TopScienceNewsActivity extends AppCompatActivity implements SwipeRe
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+                startActivity(intent);
                 finish();
+                System.exit(0);
             }
         });
         cookie.setOnClickListener(new View.OnClickListener() {
@@ -280,5 +285,9 @@ public class TopScienceNewsActivity extends AppCompatActivity implements SwipeRe
 
 
     }
+
+
+    // TODO: 14.04.2016  make animation between activities
+    // TODO: 14.04.2016  make content provider
 
 }
