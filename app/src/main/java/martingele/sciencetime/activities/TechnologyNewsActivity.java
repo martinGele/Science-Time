@@ -253,5 +253,5 @@ public class TechnologyNewsActivity extends AppCompatActivity implements SwipeRe
 
     }
 
-
+  
 }

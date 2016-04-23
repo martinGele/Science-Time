@@ -147,7 +147,8 @@ public class MostPopularNewsActivity extends AppCompatActivity implements SwipeR
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
                 startActivity(intent);
                 finish();
-                System.exit(0);            }
+                System.exit(0);
+            }
         });
         this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -252,4 +252,5 @@ public class HealthNewsActivity extends AppCompatActivity implements SwipeRefres
 
     }
 
+
 }

@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -99,7 +100,6 @@ public class TopScienceNewsActivity extends AppCompatActivity implements SwipeRe
     protected void onDestroy() {
         super.onDestroy();
         System.exit(0);
-
         finish();
     }
 
@@ -201,6 +201,7 @@ public class TopScienceNewsActivity extends AppCompatActivity implements SwipeRe
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Top Science News");
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -273,19 +274,20 @@ public class TopScienceNewsActivity extends AppCompatActivity implements SwipeRe
     @Override
     public void onRefresh() {
 
-
         ReadRssTopScienceNews read = new ReadRssTopScienceNews(this, recyclerView, bar);
         read.execute();
-
-
         if (swipeRefreshLayout.isRefreshing()) {
 
             swipeRefreshLayout.setRefreshing(false);
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
 
 
     }
-
 
     // TODO: 14.04.2016  make animation between activities
     // TODO: 14.04.2016  make content provider

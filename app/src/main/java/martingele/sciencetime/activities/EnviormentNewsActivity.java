@@ -149,7 +149,7 @@ public class EnviormentNewsActivity extends AppCompatActivity implements SwipeRe
                 finish();
                 System.exit(0);
 
-             }
+            }
         });
         this.listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

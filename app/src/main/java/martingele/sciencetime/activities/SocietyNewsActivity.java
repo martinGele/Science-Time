@@ -250,7 +250,7 @@ public class SocietyNewsActivity extends AppCompatActivity implements SwipeRefre
 
     }
 
-
+  
 }
 
 

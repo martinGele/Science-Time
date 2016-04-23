@@ -8,10 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 
 import martingele.sciencetime.R;
+
 
 public class NewsDetailsActivity extends AppCompatActivity {
 
@@ -53,8 +55,9 @@ public class NewsDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(NewsDetailsActivity.this, TopScienceNewsActivity.class);
-                startActivity(intent);
+                finish();
+                //  Intent intent = new Intent(NewsDetailsActivity.this, TopScienceNewsActivity.class);
+                // startActivity(intent);
             }
         });
 
@@ -84,6 +87,9 @@ public class NewsDetailsActivity extends AppCompatActivity {
             }
         });
 
+        WebSettings webSettings = web.getSettings();
+        webSettings.setTextSize(WebSettings.TextSize.LARGER);
+        
         bundle = getIntent().getExtras();
         web.loadUrl(bundle.getString("Link"));
 
@@ -131,8 +137,9 @@ public class NewsDetailsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent = new Intent(NewsDetailsActivity.this, TopScienceNewsActivity.class);
-        startActivity(intent);
+        finish();
+        //  Intent intent = new Intent(NewsDetailsActivity.this, TopScienceNewsActivity.class);
+        //  startActivity(intent);
     }
 
 
